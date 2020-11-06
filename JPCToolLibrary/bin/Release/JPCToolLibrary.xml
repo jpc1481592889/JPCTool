@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JPCToolLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:JPCToolLibrary.BarCode">
+            <summary>
+            条形码
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.BarCode.Generate(System.String,System.Int32,System.Int32,System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            绘制条形码
+            </summary>
+            <param name="text">条形码内容</param>
+            <param name="width">条形码宽度</param>
+            <param name="height">条形码高度</param>
+            <param name="path">条形码存储路径</param>
+            <param name="format">条形码图片格式（.Bmp .Png等）</param>
+        </member>
+        <member name="T:JPCToolLibrary.CallStoredProcedure">
+            <summary>
+            调用存储过程
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.RunProcedureNoReturn(System.String,System.String,System.Data.IDataParameter[])">
+            <summary>
+             执行存储过程，不返回任何值
+            </summary>
+            <param name="storedProcName"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.BuildQueryCommand(Oracle.ManagedDataAccess.Client.OracleConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            构建 OracleCommand 对象(用来返回一个结果集，而不是一个整数值)
+            </summary>
+            <param name="connection">数据库连接</param>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>OracleCommand</returns>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.RunProcedure(System.String,System.String,System.Data.IDataParameter[],System.Int32@)">
+            <summary>
+            执行存储过程，返回影响的行数		
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="rowsAffected">影响的行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.BuildIntCommand(Oracle.ManagedDataAccess.Client.OracleConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            创建 OracleCommand 对象实例(用来返回一个整数值)	
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>OracleCommand 对象实例</returns>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.RunProcedure(System.String,System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程 返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>OracleDataReader</returns>
+        </member>
+        <member name="M:JPCToolLibrary.CallStoredProcedure.ExecuteStoredProcedure(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            执行SQL存储过程，返回结果集
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="T:JPCToolLibrary.ImageProcessing">
+            <summary>
+            图像处理
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.ImageProcessing.ImageGrayscale(System.String,System.String)">
+            <summary>
+            图像的灰度化
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <param name="savePath">保存的目标路径</param>
+        </member>
+        <member name="M:JPCToolLibrary.ImageProcessing.Binaryzation(System.Drawing.Bitmap,System.Int32,System.Boolean)">
+            <summary>
+            二值化图像
+            </summary>
+            <param name="bitmap">位图</param>
+            <param name="threshold">阈值</param>
+            <param name="saveImage">
+            是否保存图片
+            默认保存地址：程序所在目录 + BinImage.bmp
+            </param>
+            <returns>二值化后的位图</returns>
+        </member>
+        <member name="M:JPCToolLibrary.ImageProcessing.ImageToText(System.Drawing.Bitmap)">
+            <summary>
+            位图转文本 
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:JPCToolLibrary.ImageProcessing.GetSingleChannelData(System.Byte[],System.Int32)" -->
+        <member name="M:JPCToolLibrary.ImageProcessing.writtxt(System.String,System.String)">
+            <summary>
+            将字符串写入到txt文本
+            </summary>
+            <param name="str"></param>
+            <param name="file"></param>
+        </member>
+        <member name="M:JPCToolLibrary.ImageProcessing.BranchProcessing(System.String,System.Boolean)">
+            <summary>
+            将待识别的图片分行处理
+            </summary>
+            <param name="path">需要分行的图片的路径</param>
+            <param name="outputText">是否输出图片转文本的结果</param>
+            <returns>返回Bitmap的泛型集合</returns>
+        </member>
+        <member name="T:JPCToolLibrary.QRCode">
+            <summary>
+            二维码
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.QRCode.Code(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Boolean,System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            生成带图标的二维码存储到指定的路径
+            </summary>
+            <param name="msg">二维码内容</param>
+            <param name="version">版本 1 ~ 40</param>
+            <param name="pixel">像素点大小（二维码的大小）</param>
+            <param name="icon_path">图标路径</param>
+            <param name="icon_size">图标尺寸</param>
+            <param name="icon_border">图标边框厚度</param>
+            <param name="white_edge">二维码白边</param>
+            <param name="path">二维码存储路径</param>
+            <param name="format">二维码图片格式（.Bmp .Png等）</param>
+        </member>
+        <member name="M:JPCToolLibrary.QRCode.Code(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            生成带图标的二维码
+            </summary>
+            <param name="msg">二维码内容</param>
+            <param name="version">版本 1 ~ 40</param>
+            <param name="pixel">像素点大小（二维码的大小）</param>
+            <param name="icon_path">图标路径</param>
+            <param name="icon_size">图标尺寸</param>
+            <param name="icon_border">图标边框厚度</param>
+            <param name="white_edge">二维码白边</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.QRCode.Code(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            生成不带图标的二维码
+            </summary>
+            <param name="msg">二维码内容</param>
+            <param name="version">版本 1 ~ 40</param>
+            <param name="pixel">像素点大小（二维码的大小）</param>
+            <param name="white_edge">二维码白边</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.QRCode.Code(System.String,System.Int32,System.Int32,System.Boolean,System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            生成不带图标的二维码到指定的路径
+            </summary>
+            <param name="msg">二维码内容</param>
+            <param name="version">版本 1 ~ 40</param>
+            <param name="pixel">像素点大小（二维码的大小）</param>
+            <param name="white_edge">二维码白边</param>
+            <param name="path">二维码存储路径</param>
+            <param name="format">二维码图片格式（.Bmp .Png等）</param>
+        </member>
+        <member name="T:JPCToolLibrary.SqlHelper">
+            <summary>
+            sql server 数据库的常用操作
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ConnectionDataBase(System.String)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="connStr">数据库连接串</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ExecuteInsert(System.String,System.Data.CommandType,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            执行insertsql语句的ADO.NET操作
+            专门为自增长列的插入语句描述
+            </summary>
+            <param name="connStr">数据库连接串</param>
+            <param name="cmdType">命令的类型</param>
+            <param name="cmdText">执行的SQL脚本或存储过程的名称</param>
+            <param name="cmdPrams">执行的SQL脚本的参数列表，没有则为NULL</param>
+            <returns>返回自增长序列</returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            执行update和delete等sql语句的ADO.NET操作
+            </summary>
+            <param name="connStr">数据库连接串</param>
+            <param name="cmdType">命令的类型</param>
+            <param name="cmdText">执行的SQL脚本或存储过程的名称</param>
+            <param name="cmdPrams">执行的SQL脚本的参数列表，没有则为NULL</param>
+            <returns>返回的成功与否</returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            执行包含count(*) \ max(..) 等 select 语句
+            </summary>
+            <param name="connStr">数据库连接串</param>
+            <param name="cmdType">命令的类型</param>
+            <param name="cmdText">执行的SQL脚本或存储过程的名称</param>
+            <param name="cmdPrams">执行的SQL脚本的参数列表，没有则为NULL</param>
+            <returns>返回的是第一行第一列的值</returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ExecuteReaderRis``1(System.String,System.Data.CommandType,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Sql Server数据库， 执行select语句
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="connStr">数据库连接字符串</param>
+            <param name="cmdType">命令类型</param>
+            <param name="cmdText">执行sql脚本或存储过程的名称</param>
+            <param name="cmdPrams">执行的sql脚本的参数列表，没有则为NULL</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.ExecuteReader``1(System.String,System.Data.CommandType,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="connStr">数据库连接字符串</param>
+            <param name="cmdType">命令类型</param>
+            <param name="cmdText">执行sql脚本或存储过程的名称</param>
+            <param name="cmdPrams">执行的sql脚本的参数列表，没有则为NULL</param>
+            <returns></returns>
+        </member>
+        <member name="M:JPCToolLibrary.SqlHelper.DataTableToSQLServer(System.Data.DataTable,System.String)">
+            <summary>
+            将DataTable中的数据存放到数据库中
+            </summary>
+            <param name="dt"></param>
+            <param name="connectString"></param>
+        </member>
+        <member name="T:JPCToolLibrary.StringParsing">
+            <summary>
+            字符串解析
+            </summary>
+        </member>
+        <member name="M:JPCToolLibrary.StringParsing.GetReturn(System.String,System.String)">
+            <summary>
+            解析XML字符串 解析结果放到字典里，后续可以将字典中的键通过**.Keys.ToArray()放到数组中
+            </summary>
+            <param name="xml">需要解析的字符串</param>
+            <param name="root">字符串的根节点</param>
+            <returns>返回解析的结果</returns>
+        </member>
+        <member name="M:JPCToolLibrary.StringParsing.JsonResult(System.String)">
+            <summary>
+            解析Json字符串 Json版本 Newtonsoft.Json.12.0.1 
+            解析结果放到字典里，后续可以将字典中的键通过**.Keys.ToArray()放到数组中
+            </summary>
+            <param name="JsonString">待解析的Json字符串</param>
+            <returns>解析结果</returns>
+        </member>
+    </members>
+</doc>
